@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buat Pengaduan Baru</title>
+</head>
+<body>
+    <h1>Form Pengaduan Warga</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Kirim Pengaduan</button>
+    </form>
+    <br>
+    <a href="{% url 'pengaduan-list' %}">Batal</a>
+</body>
+</html>
