@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Semua Pengaduan</title>
+</head>
+<body>
+    <h1>Daftar Semua Pengaduan Warga</h1>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Judul Pengaduan</th>
+                <th>Status</th>
+                <th>Tanggal</th>
+                <th>Nama Pelapor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aduan in object_list %}
+            <tr>
+                <td>{{ aduan.judul }}</td>
+                <td>{{ aduan.get_status_display }}</td>
+                <td>{{ aduan.tanggal_lapor|date:"d M Y" }}</td>
+                <td>{{ aduan.pelapor.nama_lengkap }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Belum ada data pengaduan masuk.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'warga-list' %}">Kembali ke Daftar Warga</a>
+</body>
+</html>
